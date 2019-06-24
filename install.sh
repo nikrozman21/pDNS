@@ -1,6 +1,7 @@
 blue=$(tput setaf 4)
+normal=$(tput sgr0)
 
-printf "%s\n" "${blue}This script was only tested on a fresh install of Debian 9." "" ""
+printf "%s\n" "${blue}This script was only tested on a fresh install of Debian 9." "" "${normal}"
 
 apt-get update && apt-get -y upgrade 
 apt-get -y install software-properties-common dirmngr git apt-transport-https ca-certificates curl gnupg2 pdns-server pdns-backend-mysql apt-utils python-pip cat
@@ -14,9 +15,9 @@ NUMBER=$(cat /dev/urandom | tr -dc '0-9' | fold -w 256 | head -n 1 | head --byte
 b='api-key='
 a=$b$NUMBER
 
-printf "%s\n" "${blue}Write this API key down! You will need it later in the process." "" "$NUMBER"
+printf "%s\n" "${blue}Write this API key down! You will need it later in the process." "" "${normal}$NUMBER"
 
-read -p "Press enter to continue"
+read -p "${blue}Press enter to continue${normal}"
 
 echo 'api=yes' >> /etc/powerdns/pdns.conf
 echo $a >> /etc/powerdns/pdns.conf
@@ -31,7 +32,7 @@ git clone https://github.com/ngoduykhanh/PowerDNS-Admin.git
 cd PowerDNS-Admin
 
 printf "%s\n" "${blue}Please change your username and password to something secure. Leave the host as it is as it tends to break stuff." "" ""
-read -p "Press enter to continue"
+read -p "${normal}Press enter to continue"
 
 nano .env
 
