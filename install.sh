@@ -4,7 +4,7 @@ normal=$(tput sgr0)
 printf "%s\n" "${blue}This script was only tested on a fresh install of Debian 9." "" "${normal}"
 
 apt-get update && apt-get -y upgrade 
-apt-get -y install software-properties-common dirmngr git apt-transport-https ca-certificates curl gnupg2 pdns-server pdns-backend-mysql apt-utils python-pip cat
+apt-get -y install software-properties-common dirmngr git apt-transport-https ca-certificates curl gnupg2 pdns-server pdns-backend-mysql apt-utils python-pip coreutils
 
 nano /etc/powerdns/pdns.d/pdns.local.gmysql.conf
 
